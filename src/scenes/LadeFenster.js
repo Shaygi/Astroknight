@@ -1,6 +1,6 @@
 import {CST} from "CST.js"
-import {MenueFenster} from "./MenueFenster";
-export class LadeFenster extends Phaser.Scene{
+import {MenueFenster} from "MenueFenster";
+export  class LadeFenster extends Phaser.Scene{
     constructor(){
         super({
             key:CST.SCENES.LOAD
@@ -10,16 +10,16 @@ export class LadeFenster extends Phaser.Scene{
 
     }
     preload(){
-        this.load.spritesheet("Menue", "./assets/Menue.png", {
+        this.load.spritesheet("Menue", "assets/Menue.png", {
             frameHeight: 300,
             frameWidth: 500
         });
-        this.load.spritesheet("Astro", "./assets/Astro.png", {
+        this.load.spritesheet("Astro", "assets/Astro.png", {
             frameHeight: 29,
             frameWidth: 20
         });
-        this.load.image("Play", "./assets/Play.png");
-        this.load.image("Options", "./assets/Options.png");
+        this.load.image("Play", "assets/Play.png");
+        this.load.image("Options", "assets/Options.png");
 
         let loadingBar = this.add.graphics({
             fillStyle: {
