@@ -1,16 +1,16 @@
-import MenueFenster from "./scenes/MenueFenster";
+import MenueFenster from "./scenes/MenueFenster.js";
 
 const astroknight = {
     width: 512,
     height: 512,
-    backgroundImage: 'assets/Menuebild.png',
+    backgroundColor: '#3333333',
     type: Phaser.AUTO,
-    parent: 'astroknight',
-    scene:[MenueFenster],
-    scale: {
-    zoom: 2,
-    },
-    physics: {
+    //parent: 'astroknight',
+    //scene:[MenueFenster],
+    //scale: {
+    //zoom: 2,
+   // },
+    /*physics: {
         default: 'matter',
         matter: {
             debug:true,
@@ -25,7 +25,6 @@ const astroknight = {
                 mapping: 'matterCollision'
             }
         ]
-    }
+    }*/
 }
-
 new Phaser.Game(astroknight);
