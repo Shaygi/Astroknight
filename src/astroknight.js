@@ -1,12 +1,12 @@
-import MenueFenster from "./scenes/MenueFenster.js";
-
+import MenueFenster from "./scenes/MenueFenster";
+import LadeFenster from "./scenes/LadeFenster";
 const astroknight = {
     width: 512,
     height: 512,
     backgroundColor: '#3333333',
     type: Phaser.AUTO,
-    //parent: 'astroknight',
-    //scene:[MenueFenster],
+    parent: 'astroknight',
+    scene:[LadeFenster, MenueFenster]
     //scale: {
     //zoom: 2,
    // },

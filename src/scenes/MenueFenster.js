@@ -27,6 +27,7 @@ function preload() {
     });
     this.load.image('play', 'assets/Play.png');
     this.load.image('options', 'assets/Options.png');
+
 }
 
 var men;
@@ -48,6 +49,7 @@ function create() {
     play.setScale(0.56);
     options = this.add.image(740, 420, 'options');
     options.setScale(0.4);
+
 }
 
 function update() {
