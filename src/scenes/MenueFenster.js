@@ -21,9 +21,9 @@ var game = new Phaser.Game(config);
 function preload() {
 
     this.load.spritesheet('backgroundanim', 'assets/Menuesprite.png', {
-        frameHeight: 1200,
-        frameWidth: 2400,
-        spacing: 0
+        frameHeight: 1290,
+        frameWidth: 2410,
+        spacing: 10
     });
     this.load.image('play', 'assets/Play.png');
     this.load.image('options', 'assets/Options.png');
@@ -41,12 +41,12 @@ function create() {
         frameRate: 2,
         repeat: -1
     });
-    men = this.add.sprite(750, 350, "menueanimation");
-    men.setScale(0.6);
+    men = this.add.sprite(740, 355, "menueanimation");
+    men.setScale(0.57);
     men.play("anim");
-    play = this.add.image(750, 380, 'play');
+    play = this.add.image(740, 360, 'play');
     play.setScale(0.56);
-    options = this.add.image(750, 430, 'options');
+    options = this.add.image(740, 420, 'options');
     options.setScale(0.4);
 }
 
