@@ -75,6 +75,7 @@ function preload() {
 }
 function create() {
     this.add.image(740, 360, 'logo');
+    this.input.on('pointerdown', ()=> this.scene.start('anim'))
 
 }
 function update() {
