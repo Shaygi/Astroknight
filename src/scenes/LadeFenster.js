@@ -1,6 +1,5 @@
 var config = {
     type: Phaser.AUTO,
-    parent: 'phaser-example',
     width: 1485,
     height: 700,
     physics: {
@@ -20,8 +19,6 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload() {
-
-
 
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
