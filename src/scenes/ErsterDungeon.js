@@ -1,3 +1,5 @@
+
+
 var config = {
     type: Phaser.AUTO,
     width: 1485,
@@ -23,16 +25,16 @@ function preload() {
         key: 'tiles',
         url: 'assets/tiles.png',
     });
-    this.load.tilemapTiledJSON('dungeon', 'assets/ErsterDungeon.json');
+    this.load.tilemapTiledJSON('dungeon', 'assets/tilemaps/ErsterDungeon.json');
 
 
 }
 
 
 function create() {
-    this.add.image(100,100, 'tiles');
+    this.add.image(100,100, 'assets/tileset/tiles');
     const map = this.make.tilemap({key: 'dungeon'});
-    const tileset = map.addTilesetImage('ErsterDungeon', 'tiles');
+    const tileset = map.addTilesetImage('assets/tilemaps/ErsterDungeon', 'tiles');
     map.createStaticLayer('wände', tileset);
 }
 function update() {

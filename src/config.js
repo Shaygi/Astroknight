@@ -1,19 +1,24 @@
+
 import Phaser from 'lib/phaser3';
-import LadeFenster from "scenes/LadeFenster";
-import MenueFenster from "scenes/MenueFenster";
-import SceneChanger from "scenes/SceneChanger";
+import LadeFensterZwei from './scenes/LadeFensterZwei';
+import MenueFensterZwei from './scenes/MenueFensterZwei';
+
+
 var config = {
     type: Phaser.AUTO,
-    parent: 'phaser-example',
     width: 1485,
     height: 700,
-    scene: [SceneChanger, LadeFenster, MenueFenster],
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: {y: 300},
+            gravity: {y: 0},
             debug: false
         }
-    }
-}
+    },
+    scene: [LadeFensterZwei, MenueFensterZwei]
+};
+
+var game = new Phaser.Game(config);
+
+//export default Astroknight;
 export {config}
