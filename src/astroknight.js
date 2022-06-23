@@ -10,7 +10,7 @@ var config = {
             debug: false
         }
     },
-    scene: [LadeFensterZwei, MenueFensterZwei]
+    scene: [LadeFenster, MenueFenster]
 };
 
 var game = new Phaser.Game(config);
