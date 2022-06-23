@@ -1,13 +1,13 @@
-import {Scene}  from 'Phaser'
-class LadeFensterZwei extends Scene {
 
-    constructor(){
+class LadeFensterZwei extends Phaser.Scene {
+
+    constructor() {
         super('LadeFensterZwei');
     }
 // Create a new Phaser Game object
 
 
-    preload() {
+    preload(){
 
         var progressBar = this.add.graphics();
         var progressBox = this.add.graphics();
@@ -62,13 +62,10 @@ class LadeFensterZwei extends Scene {
 
     create() {
         this.add.image(740, 360, 'logo');
-        this.input.on('pointerdown', () => this.scene.start('anim'))
-
+        this.input.on('pointerdown', () => this.scene.start('anim'));
+        this.scene.start(CST.SCENES.MENU)
     }
 
     update() {
     }
-}
-
-export default class LadeFensterZwei {
 }

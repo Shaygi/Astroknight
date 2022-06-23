@@ -21,21 +21,22 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload() {
-    this.load.image({
+    this.load.image('dungeon', 'tilemaps/Dungeon1.png');
+    /*this.load.image({
         key: 'tiles',
         url: 'assets/tiles.png',
     });
-    this.load.tilemapTiledJSON('dungeon', 'assets/tilemaps/ErsterDungeon.json');
+    this.load.tilemapTiledJSON('dungeon', 'assets/tilemaps/ErsterDungeon.json');*/
 
 
 }
 
 
 function create() {
-    this.add.image(100,100, 'assets/tileset/tiles');
+    /*this.add.image(100,100, 'assets/tilemaps/tiles');
     const map = this.make.tilemap({key: 'dungeon'});
     const tileset = map.addTilesetImage('assets/tilemaps/ErsterDungeon', 'tiles');
-    map.createStaticLayer('wände', tileset);
+    map.createStaticLayer('wände', tileset);*/
 }
 function update() {
 }

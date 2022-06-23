@@ -1,5 +1,5 @@
-import {Scene}  from 'Phaser'
-class MenueFensterZwei extends Scene {
+
+class MenueFensterZwei extends Phaser.Scene {
 
     constructor ()
     {
@@ -37,7 +37,4 @@ class MenueFensterZwei extends Scene {
 
 }
 
-}
-
-export default class MenueFensterZwei {
 }
