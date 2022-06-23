@@ -63,6 +63,7 @@ class LadeFenster extends Phaser.Scene {
 
     }
 
-    update() {this.input.on('pointerdown', () => this.scene.start('MenueFenster'));
+    update() {
+        this.input.on('pointerdown', () => this.scene.start('MenueFenster'));
     }
 }

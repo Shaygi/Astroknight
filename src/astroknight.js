@@ -1,4 +1,3 @@
-
 var config = {
     type: Phaser.AUTO,
     width: 1485,
@@ -10,7 +9,7 @@ var config = {
             debug: false
         }
     },
-    scene: [LadeFenster, MenueFenster]
+    scene: [ErsterDungeon]
 };
 
 var game = new Phaser.Game(config);

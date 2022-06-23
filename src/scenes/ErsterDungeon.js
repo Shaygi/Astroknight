@@ -1,42 +1,32 @@
+class ErsterDungeon extends Phaser.Scene {
 
-
-var config = {
-    type: Phaser.AUTO,
-    width: 1485,
-    height: 700,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: {y: 0},
-            debug: false
-        }
-    },
-    scene: {
-        preload: preload,
-        create: create,
-        update: update
+    constructor() {
+        super('ErsterDungeon');
     }
-};
-// Create a new Phaser Game object
-var game = new Phaser.Game(config);
 
-function preload() {
-    this.load.image('dungeon', 'tilemaps/Dungeon1.png');
-    /*this.load.image({
-        key: 'tiles',
-        url: 'assets/tiles.png',
-    });
-    this.load.tilemapTiledJSON('dungeon', 'assets/tilemaps/ErsterDungeon.json');*/
+    preload() {
+        this.load.image("terrain", "assets/tilemaps/tiles.png"); //Tileset
+        this.load.tilemapTiledJSON('dungeon', 'assets/tilemaps/Dungeon.json');
+    }
 
 
-}
+
+    create() {
+        const dungeon = this.make.tilemap({ key: "dungeon" });
+        let terrain = dungeon.addTilesetImage("DungeonTiles", "terrain");
+        // layers
+        let schattenLayer = dungeon.createStaticLayer("schatten", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        let bodenLayer = dungeon.createStaticLayer("boden", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        let wandLayer = dungeon.createStaticLayer("wand", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        let eingangLayer = dungeon.createStaticLayer("Eingang", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        let ausgangLayer = dungeon.createStaticLayer("Ausgang", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        let dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        let wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
 
 
-function create() {
-    /*this.add.image(100,100, 'assets/tilemaps/tiles');
-    const map = this.make.tilemap({key: 'dungeon'});
-    const tileset = map.addTilesetImage('assets/tilemaps/ErsterDungeon', 'tiles');
-    map.createStaticLayer('wände', tileset);*/
-}
-function update() {
+    }
+
+
+    update() {
+    }
 }
