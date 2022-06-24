@@ -82,8 +82,14 @@ class ErsterDungeon extends Phaser.Scene {
         //  Input Events
         cursors = this.input.keyboard.createCursorKeys();
         this.physics.add.collider(player, wandLayer);
-
-
+        wandLayer.setCollisionBetween(265,351);
+        this.physics.add.collider(player, dekoLayer);
+        dekoLayer.setCollisionBetween(297,355);
+        this.physics.add.collider(player, wasserLayer);
+        //wasserLayer.setCollisionBetween(181,214);
+        wasserLayer.setCollision(186);
+        wasserLayer.setCollision(214);
+        wasserLayer.setCollision(242);
     }
 
     update() {
