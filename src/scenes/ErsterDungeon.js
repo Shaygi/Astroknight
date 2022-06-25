@@ -1,6 +1,8 @@
 var cursors;
 var player;
 var wandLayer;
+var dekoLayer;
+var wasserLayer;
 class ErsterDungeon extends Phaser.Scene {
 
     constructor() {
@@ -25,8 +27,8 @@ class ErsterDungeon extends Phaser.Scene {
         wandLayer = dungeon.createStaticLayer("wand", terrain, 60, 0).setScale(0.54).setDepth(-1);
         let eingangLayer = dungeon.createStaticLayer("Eingang", terrain, 60, 0).setScale(0.54).setDepth(-1);
         let ausgangLayer = dungeon.createStaticLayer("Ausgang", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        let dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        let wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
         player = this.physics.add.sprite(200, 450, 'astro').setScale(1.35);
         player.setCollideWorldBounds(true);
 
@@ -78,7 +80,6 @@ class ErsterDungeon extends Phaser.Scene {
             repeat: -1
         });
 
-
         //  Input Events
         cursors = this.input.keyboard.createCursorKeys();
         this.physics.add.collider(player, wandLayer);
@@ -93,6 +94,7 @@ class ErsterDungeon extends Phaser.Scene {
     }
 
     update() {
+
         if (cursors.left.isDown)
         {
             player.setVelocityX(-160);
