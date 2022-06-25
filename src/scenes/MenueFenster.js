@@ -1,4 +1,6 @@
 var playknopf;
+var optionsknopf;
+var menue;
 class MenueFenster extends Phaser.Scene {
 
     constructor ()
@@ -21,16 +23,13 @@ class MenueFenster extends Phaser.Scene {
     create() {
         this.anims.create({
             key: 'menueanimation',
-            frames: this.anims.generateFrameNumbers("backanim", {
-                start: 0,
-                end: 4
-            }),
+            frames: this.anims.generateFrameNumbers('backanim', {start: 0, end: 4}),
             frameRate: 0.25,
             repeat: -1
         });
-        this.add.sprite(740, 355, "backanim").setScale(0.57).play('menueanimation',true);
+        menue = this.physics.add.sprite(740, 355, 'backanim').setScale(0.57).play('menueanimation',true);
         playknopf = this.add.image(740, 360, 'playbutton').setScale(0.56);
-        this.add.image(740, 420, 'optionsbutton').setScale(0.4);
+        optionsknopf = this.add.image(740, 420, 'optionsbutton').setScale(0.4);
 
 
     }
