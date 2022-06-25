@@ -1,4 +1,4 @@
-var cursors;
+var cursor;
 var player;
 var fireLayer;
 var wandLayer;
@@ -11,19 +11,19 @@ class ZweiterDungeon extends Phaser.Scene{
     }
 
     preload() {
-        this.load.image("cave", "assets/tilemaps/cave.png"); //Tileset
+        this.load.image("terrain", "assets/tilemaps/cave.png"); //Tileset
         this.load.tilemapTiledJSON('dungeon2', 'assets/tilemaps/ZweiterDungeon.json');
         this.load.spritesheet('astro', 'assets/Astro.png', { frameWidth: 20, frameHeight: 29 });
     }
 
     create(){
         const dungeon2 = this.make.tilemap({ key: "dungeon2" });
-        let cave = dungeon2.addTilesetImage("cave", "cave");
+        let terrain = dungeon2.addTilesetImage("cave", "terrain");
         // layers
-        fireLayer = dungeon2.createStaticLayer("fire", cave, 60, 0).setScale(0.54).setDepth(-1);
-        wandLayer = dungeon2.createStaticLayer("wand", cave, 60, 0).setScale(0.54).setDepth(-1);
-        bodenLayer = dungeon2.createStaticLayer("Kachelebene 4", cave, 60, 0).setScale(0.54).setDepth(-1);
-        let dekorLayer = dungeon2.createStaticLayer("dekor", cave, 60, 0).setScale(0.54).setDepth(-1);
+        fireLayer = dungeon2.createStaticLayer("fire", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        wandLayer = dungeon2.createStaticLayer("wand", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        bodenLayer = dungeon2.createStaticLayer("Kachelebene 4", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        let dekorLayer = dungeon2.createStaticLayer("dekor", terrain, 60, 0).setScale(0.54).setDepth(-1);
         player = this.physics.add.sprite(200, 450, 'astro').setScale(1.35);
         player.body.setSize(22, 25, true);
         player.setBounce(0.2);
@@ -84,8 +84,8 @@ class ZweiterDungeon extends Phaser.Scene{
                 });
 
                 //  Input Events
-                /*cursors = this.input.keyboard.createCursorKeys();
-                this.physics.add.collider(player, fireLayer);
+                cursor = this.input.keyboard.createCursorKeys();
+                /*this.physics.add.collider(player, fireLayer);
                 wandLayer.setCollisionBetween(265,352);
                 this.physics.add.collider(player, wandLayer);*/
 
@@ -95,7 +95,7 @@ class ZweiterDungeon extends Phaser.Scene{
 
     update(){
 
-        if (cursors.left.isDown)
+        if (cursor.left.isDown)
         {
             player.setVelocityX(-160);
             player.anims.play('left', true);
@@ -112,7 +112,7 @@ class ZweiterDungeon extends Phaser.Scene{
             player.setVelocityY(0);
             player.anims.play('turnleft', true);
         }*/
-        else if (cursors.right.isDown)
+        else if (cursor.right.isDown)
         {
             player.setVelocityX(160);
 
@@ -124,13 +124,13 @@ class ZweiterDungeon extends Phaser.Scene{
             player.setVelocityY(0);
             player.anims.play('turnright', true);
         }*/
-        else if (cursors.up.isDown)
+        else if (cursor.up.isDown)
         {
             player.setVelocityY(-160);
 
             player.anims.play('up', true);
         }
-        else if (cursors.down.isDown)
+        else if (cursor.down.isDown)
         {
             player.setVelocityY(160);
 
