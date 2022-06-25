@@ -31,6 +31,7 @@ class ErsterDungeon extends Phaser.Scene {
         wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
         player = this.physics.add.sprite(200, 450, 'astro').setScale(1.35);
         player.body.setSize(22, 25, true);
+        player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
         this.anims.create({
@@ -39,6 +40,8 @@ class ErsterDungeon extends Phaser.Scene {
             frameRate: 10,
             repeat: -1
         });
+
+
 
         this.anims.create({
             key: 'up',
