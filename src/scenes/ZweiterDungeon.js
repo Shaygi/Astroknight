@@ -20,7 +20,7 @@ class ZweiterDungeon extends Phaser.Scene{
         const dungeon2 = this.make.tilemap({ key: "dungeon2" });
         let terrain = dungeon2.addTilesetImage("cave", "terrain");
         // layers
-        fireLayer = dungeon2.createStaticLayer("fire", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        //fireLayer = dungeon2.createStaticLayer("fire", terrain, 60, 0).setScale(0.54).setDepth(-1);
         wandLayer = dungeon2.createStaticLayer("wand", terrain, 60, 0).setScale(0.54).setDepth(-1);
         bodenLayer = dungeon2.createStaticLayer("Kachelebene 4", terrain, 60, 0).setScale(0.54).setDepth(-1);
         let dekorLayer = dungeon2.createStaticLayer("dekor", terrain, 60, 0).setScale(0.54).setDepth(-1);
