@@ -30,6 +30,8 @@ class ErsterDungeon extends Phaser.Scene {
         dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setScale(0.54).setDepth(-1);
         wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
         player = this.physics.add.sprite(200, 450, 'astro').setScale(1.35);
+        player.body.setSize(22, 25, true);
+        player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
         this.anims.create({
@@ -38,6 +40,8 @@ class ErsterDungeon extends Phaser.Scene {
             frameRate: 10,
             repeat: -1
         });
+
+
 
         this.anims.create({
             key: 'up',
@@ -55,9 +59,16 @@ class ErsterDungeon extends Phaser.Scene {
 
 
         this.anims.create({
-            key: 'turn',
-            frames: [ { key: 'astro', frame: 0 } ],
-            frameRate: 20
+            key: 'turnright',
+            frames:  this.anims.generateFrameNumbers('astro', { start: 0, end: 4 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'turnleft',
+            frames:  this.anims.generateFrameNumbers('astro', { start: 5, end: 9 }),
+            frameRate: 10,
+            repeat: -1
         });
 
         this.anims.create({
@@ -83,14 +94,15 @@ class ErsterDungeon extends Phaser.Scene {
         //  Input Events
         cursors = this.input.keyboard.createCursorKeys();
         this.physics.add.collider(player, wandLayer);
-        wandLayer.setCollisionBetween(265,351);
+        wandLayer.setCollisionBetween(265,352);
+        wandLayer.setCollisionBetween(372, 376);
+        wandLayer.setCollision(251);
+        wandLayer.setCollision(279);
         this.physics.add.collider(player, dekoLayer);
         dekoLayer.setCollisionBetween(297,355);
         this.physics.add.collider(player, wasserLayer);
-        //wasserLayer.setCollisionBetween(181,214);
-        wasserLayer.setCollision(186);
-        wasserLayer.setCollision(214);
-        wasserLayer.setCollision(242);
+        wasserLayer.setCollisionBetween(186,211);
+        wasserLayer.setCollisionBetween(214,242);
     }
 
     update() {
@@ -98,15 +110,32 @@ class ErsterDungeon extends Phaser.Scene {
         if (cursors.left.isDown)
         {
             player.setVelocityX(-160);
-
             player.anims.play('left', true);
+            if(cursors.left.isUp)
+            {
+                player.setVelocityX(0);
+                player.setVelocityY(0);
+                player.anims.play('turnleft', true);
+            }
         }
+        /*else if(cursors.left.isUp)
+        {
+            player.setVelocityX(0);
+            player.setVelocityY(0);
+            player.anims.play('turnleft', true);
+        }*/
         else if (cursors.right.isDown)
         {
             player.setVelocityX(160);
 
             player.anims.play('right', true);
         }
+        /*else if(cursors.right.isUp)
+        {
+            player.setVelocityX(0);
+            player.setVelocityY(0);
+            player.anims.play('turnright', true);
+        }*/
         else if (cursors.up.isDown)
         {
             player.setVelocityY(-160);
@@ -123,9 +152,27 @@ class ErsterDungeon extends Phaser.Scene {
         {
             player.setVelocityX(0);
             player.setVelocityY(0);
-
-            player.anims.play('turn');
+            player.anims.play('turnright', true);
         }
+
+        /*
+        if(cursors.left.isDown){
+            player.setVelocityX(-160);
+        }else if (cursors.right.isDown){
+            player.setVelocityX(160);
+        }
+        if (cursors.up.isDown){
+            player.setVelocityY(-160);
+        }else if (cursors.down.isDown){
+            player.setVelocityY(160);
+        }
+
+        player.setVelocity(player.velocityX, player.velocityY);
+        if(Math.abs(player.velocityX) > 0.1 || Math.abs(player.velocityY) > 0.1){
+            player.anims.play('right', true);
+        }else{
+            player.anims.play('turnright', true);
+        }*/
 
     }
 }
