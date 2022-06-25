@@ -107,8 +107,13 @@ class ErsterDungeon extends Phaser.Scene {
         if (cursors.left.isDown)
         {
             player.setVelocityX(-160);
-
             player.anims.play('left', true);
+            if(cursors.left.isUp)
+            {
+                player.setVelocityX(0);
+                player.setVelocityY(0);
+                player.anims.play('turnleft', true);
+            }
         }
         /*else if(cursors.left.isUp)
         {
@@ -146,6 +151,25 @@ class ErsterDungeon extends Phaser.Scene {
             player.setVelocityY(0);
             player.anims.play('turnright', true);
         }
+
+        /*
+        if(cursors.left.isDown){
+            player.setVelocityX(-160);
+        }else if (cursors.right.isDown){
+            player.setVelocityX(160);
+        }
+        if (cursors.up.isDown){
+            player.setVelocityY(-160);
+        }else if (cursors.down.isDown){
+            player.setVelocityY(160);
+        }
+
+        player.setVelocity(player.velocityX, player.velocityY);
+        if(Math.abs(player.velocityX) > 0.1 || Math.abs(player.velocityY) > 0.1){
+            player.anims.play('right', true);
+        }else{
+            player.anims.play('turnright', true);
+        }*/
 
     }
 }
