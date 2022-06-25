@@ -30,6 +30,7 @@ class ErsterDungeon extends Phaser.Scene {
         dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setScale(0.54).setDepth(-1);
         wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
         player = this.physics.add.sprite(200, 450, 'astro').setScale(1.35);
+        player.body.setSize(22, 25, true);
         player.setCollideWorldBounds(true);
 
         this.anims.create({
@@ -91,7 +92,8 @@ class ErsterDungeon extends Phaser.Scene {
         //  Input Events
         cursors = this.input.keyboard.createCursorKeys();
         this.physics.add.collider(player, wandLayer);
-        wandLayer.setCollisionBetween(265,351);
+        wandLayer.setCollisionBetween(265,352);
+        wandLayer.setCollisionBetween(372, 376);
         wandLayer.setCollision(251);
         wandLayer.setCollision(279);
         this.physics.add.collider(player, dekoLayer);
@@ -99,9 +101,6 @@ class ErsterDungeon extends Phaser.Scene {
         this.physics.add.collider(player, wasserLayer);
         wasserLayer.setCollisionBetween(186,211);
         wasserLayer.setCollisionBetween(214,242);
-
-
-
     }
 
     update() {
