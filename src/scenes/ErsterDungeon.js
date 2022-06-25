@@ -1,6 +1,8 @@
 var cursors;
 var player;
 var wandLayer;
+var dekoLayer;
+var wasserLayer;
 class ErsterDungeon extends Phaser.Scene {
 
     constructor() {
@@ -25,8 +27,8 @@ class ErsterDungeon extends Phaser.Scene {
         wandLayer = dungeon.createStaticLayer("wand", terrain, 60, 0).setScale(0.54).setDepth(-1);
         let eingangLayer = dungeon.createStaticLayer("Eingang", terrain, 60, 0).setScale(0.54).setDepth(-1);
         let ausgangLayer = dungeon.createStaticLayer("Ausgang", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        let dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        let wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setScale(0.54).setDepth(-1);
+        wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
         player = this.physics.add.sprite(200, 450, 'astro').setScale(1.35);
         player.setCollideWorldBounds(true);
 
@@ -53,9 +55,16 @@ class ErsterDungeon extends Phaser.Scene {
 
 
         this.anims.create({
-            key: 'turn',
-            frames: [ { key: 'astro', frame: 0 } ],
-            frameRate: 20
+            key: 'turnright',
+            frames:  this.anims.generateFrameNumbers('astro', { start: 0, end: 4 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'turnleft',
+            frames:  this.anims.generateFrameNumbers('astro', { start: 5, end: 9 }),
+            frameRate: 10,
+            repeat: -1
         });
 
         this.anims.create({
@@ -83,13 +92,16 @@ class ErsterDungeon extends Phaser.Scene {
         cursors = this.input.keyboard.createCursorKeys();
         this.physics.add.collider(player, wandLayer);
         wandLayer.setCollisionBetween(265,351);
+        wandLayer.setCollision(251);
+        wandLayer.setCollision(279);
         this.physics.add.collider(player, dekoLayer);
         dekoLayer.setCollisionBetween(297,355);
         this.physics.add.collider(player, wasserLayer);
-        //wasserLayer.setCollisionBetween(181,214);
-        wasserLayer.setCollision(186);
-        wasserLayer.setCollision(214);
-        wasserLayer.setCollision(242);
+        wasserLayer.setCollisionBetween(186,211);
+        wasserLayer.setCollisionBetween(214,242);
+
+
+
     }
 
     update() {
@@ -99,12 +111,24 @@ class ErsterDungeon extends Phaser.Scene {
 
             player.anims.play('left', true);
         }
+        /*else if(cursors.left.isUp)
+        {
+            player.setVelocityX(0);
+            player.setVelocityY(0);
+            player.anims.play('turnleft', true);
+        }*/
         else if (cursors.right.isDown)
         {
             player.setVelocityX(160);
 
             player.anims.play('right', true);
         }
+        /*else if(cursors.right.isUp)
+        {
+            player.setVelocityX(0);
+            player.setVelocityY(0);
+            player.anims.play('turnright', true);
+        }*/
         else if (cursors.up.isDown)
         {
             player.setVelocityY(-160);
@@ -121,8 +145,7 @@ class ErsterDungeon extends Phaser.Scene {
         {
             player.setVelocityX(0);
             player.setVelocityY(0);
-
-            player.anims.play('turn');
+            player.anims.play('turnright', true);
         }
 
     }
