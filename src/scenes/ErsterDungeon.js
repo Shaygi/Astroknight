@@ -6,7 +6,7 @@ var ränderLayer;
 class ErsterDungeon extends Phaser.Scene{
 
     constructor() {
-        super('ZweiterDungeon');
+        super('ErsterDungeon');
 
     }
 

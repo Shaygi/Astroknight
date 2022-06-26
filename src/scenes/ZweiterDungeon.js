@@ -6,7 +6,7 @@ var wasserLayer;
 class ZweiterDungeon extends Phaser.Scene {
 
     constructor() {
-        super('ErsterDungeon');
+        super('ZweiterDungeon');
 
     }
 
