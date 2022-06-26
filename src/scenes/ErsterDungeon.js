@@ -1,39 +1,39 @@
 var cursors;
 var player;
+var lavaLayer;
 var wandLayer;
-var dekoLayer;
-var wasserLayer;
-class ErsterDungeon extends Phaser.Scene {
+var ränderLayer;
+class ErsterDungeon extends Phaser.Scene{
 
     constructor() {
-        super('ErsterDungeon');
+        super('ZweiterDungeon');
 
     }
 
     preload() {
-        this.load.image("terrain", "assets/tilemaps/tiles.png"); //Tileset
-        this.load.tilemapTiledJSON('dungeon', 'assets/tilemaps/Dungeon.json');
+        this.load.image("cave", "assets/tilemaps/cave.png"); //Tileset
+        this.load.tilemapTiledJSON('dungeon2', 'assets/tilemaps/ZweiterDungeon.json');
         this.load.spritesheet('astro', 'assets/Astro.png', { frameWidth: 20, frameHeight: 29 });
     }
 
-
-
-    create() {
-        const dungeon = this.make.tilemap({ key: "dungeon" });
-        let terrain = dungeon.addTilesetImage("DungeonTiles", "terrain");
+    create(){
+        const dungeon2 = this.make.tilemap({ key: "dungeon2" });
+        let cave = dungeon2.addTilesetImage("cave", "cave");
         // layers
-        let schattenLayer = dungeon.createStaticLayer("schatten", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        let bodenLayer = dungeon.createStaticLayer("boden", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        wandLayer = dungeon.createStaticLayer("wand", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        let eingangLayer = dungeon.createStaticLayer("Eingang", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        let ausgangLayer = dungeon.createStaticLayer("Ausgang", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setScale(0.54).setDepth(-1);
-        player = this.physics.add.sprite(200, 450, 'astro').setScale(1.35);
+
+        lavaLayer = dungeon2.createStaticLayer("lava", cave, -600, 0).setScale(5).setDepth(-1);
+        let bodenLayer = dungeon2.createStaticLayer("boden", cave, 60, 0).setScale(3).setDepth(-1);
+        wandLayer = dungeon2.createStaticLayer("wand", cave, 60, 0).setScale(3).setDepth(-1);
+        ränderLayer = dungeon2.createStaticLayer("ränder", cave, 60, 0).setScale(3).setDepth(-1);
+        let eingang = dungeon2.createStaticLayer("Eingang", cave, 60, 0).setScale(3).setDepth(-1);
+        let ausgang = dungeon2.createStaticLayer("Ausgang", cave, 60, 0).setScale(3).setDepth(-1);
+        let dekorLayer = dungeon2.createStaticLayer("dekor", cave, 60, 0).setScale(3).setDepth(-1);
+        player = this.physics.add.sprite(610, 170, 'astro').setScale(2.5);
         player.body.setSize(22, 25, true);
         player.setBounce(0.2);
-        player.setCollideWorldBounds(true);
+        this.cameras.main.startFollow(player);
 
+        cursors = this.input.keyboard.createCursorKeys();
         this.anims.create({
             key: 'left',
             frames: this.anims.generateFrameNumbers('astro', { start: 17, end: 23 }),
@@ -91,22 +91,15 @@ class ErsterDungeon extends Phaser.Scene {
             repeat: -1
         });
 
-        //  Input Events
-        cursors = this.input.keyboard.createCursorKeys();
+
         this.physics.add.collider(player, wandLayer);
-        wandLayer.setCollisionBetween(265,352);
-        wandLayer.setCollisionBetween(372, 376);
-        wandLayer.setCollision(251);
-        wandLayer.setCollision(279);
-        this.physics.add.collider(player, dekoLayer);
-        dekoLayer.setCollisionBetween(297,355);
-        this.physics.add.collider(player, wasserLayer);
-        wasserLayer.setCollisionBetween(186,211);
-        wasserLayer.setCollisionBetween(214,242);
+        wandLayer.setCollisionBetween(12, 293);
+        this.physics.add.collider(player, ränderLayer);
+        ränderLayer.setCollisionBetween(176,293);
     }
 
-    update() {
 
+    update(){
         if (cursors.left.isDown)
         {
             player.setVelocityX(-160);
