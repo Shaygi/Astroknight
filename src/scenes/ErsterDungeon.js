@@ -2,7 +2,7 @@ var cursors;
 var player;
 var lavaLayer;
 var wandLayer;
-var ränderLayer;
+var randerLayer;
 class ErsterDungeon extends Phaser.Scene{
 
     constructor() {
@@ -13,7 +13,7 @@ class ErsterDungeon extends Phaser.Scene{
     preload() {
         this.load.image("cave", "assets/tilemaps/cave.png"); //Tileset
         this.load.tilemapTiledJSON('dungeon2', 'assets/tilemaps/ZweiterDungeon.json');
-        this.load.spritesheet('astro', 'assets/Astro.png', { frameWidth: 20, frameHeight: 29 });
+        this.load.spritesheet('astro', 'assets/Astro2.png', { frameWidth: 320, frameHeight: 464 });
     }
 
     create(){
@@ -24,11 +24,11 @@ class ErsterDungeon extends Phaser.Scene{
         lavaLayer = dungeon2.createStaticLayer("lava", cave, -600, 0).setScale(5).setDepth(-1);
         let bodenLayer = dungeon2.createStaticLayer("boden", cave, 60, 0).setScale(3).setDepth(-1);
         wandLayer = dungeon2.createStaticLayer("wand", cave, 60, 0).setScale(3).setDepth(-1);
-        ränderLayer = dungeon2.createStaticLayer("ränder", cave, 60, 0).setScale(3).setDepth(-1);
+        randerLayer = dungeon2.createStaticLayer("ränder", cave, 60, 0).setScale(3).setDepth(-1);
         let eingang = dungeon2.createStaticLayer("Eingang", cave, 60, 0).setScale(3).setDepth(-1);
         let ausgang = dungeon2.createStaticLayer("Ausgang", cave, 60, 0).setScale(3).setDepth(-1);
         let dekorLayer = dungeon2.createStaticLayer("dekor", cave, 60, 0).setScale(3).setDepth(-1);
-        player = this.physics.add.sprite(610, 170, 'astro').setScale(2.5);
+        player = this.physics.add.sprite(610, 170, 'astro').setScale(0.2);
         player.body.setSize(22, 25, true);
         player.setBounce(0.2);
         this.cameras.main.startFollow(player);
@@ -94,8 +94,8 @@ class ErsterDungeon extends Phaser.Scene{
 
         this.physics.add.collider(player, wandLayer);
         wandLayer.setCollisionBetween(12, 293);
-        this.physics.add.collider(player, ränderLayer);
-        ränderLayer.setCollisionBetween(176,293);
+        this.physics.add.collider(player, randerLayer);
+        randerLayer.setCollisionBetween(176,293);
     }
 
 

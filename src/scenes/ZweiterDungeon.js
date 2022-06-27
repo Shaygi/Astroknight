@@ -13,7 +13,7 @@ class ZweiterDungeon extends Phaser.Scene {
     preload() {
         this.load.image("terrain", "assets/tilemaps/tiles.png"); //Tileset
         this.load.tilemapTiledJSON('dungeon', 'assets/tilemaps/Dungeon.json');
-        this.load.spritesheet('astro', 'assets/Astro.png', { frameWidth: 20, frameHeight: 29 });
+        this.load.spritesheet('astro', 'assets/Astro2.png', { frameWidth: 320, frameHeight: 464 });
     }
 
 
@@ -29,7 +29,7 @@ class ZweiterDungeon extends Phaser.Scene {
         let ausgangLayer = dungeon.createStaticLayer("Ausgang", terrain, 60, 0).setDepth(-1);
         dekoLayer = dungeon.createStaticLayer("deko", terrain, 60, 0).setDepth(-1);
         wasserLayer = dungeon.createStaticLayer("wasser", terrain, 60, 0).setDepth(-1);
-        player = this.physics.add.sprite(300, 590, 'astro').setScale(2.5);
+        player = this.physics.add.sprite(300, 590, 'astro').setScale(0.2);
         //player.body.setSize(22, 25, true);
         player.setBounce(0.2);
 
